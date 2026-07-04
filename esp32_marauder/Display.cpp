@@ -98,8 +98,8 @@ uint8_t Display::updateTouch(uint16_t *x, uint16_t *y, uint16_t threshold) {
 
           switch (rot) {
             case 0: // Standard Protrait
-              *x = map(p.x, 200, 3700, 1, TFT_WIDTH);
-              *y = map(p.y, 240, 3800, 1, TFT_HEIGHT);
+            *x = map(p.y, 3800, 240, 1, TFT_WIDTH);
+              *y = map(p.x, 200, 3700, 1, TFT_HEIGHT);
               break;
             case 1:
               *x = map(p.y, 143, 3715, 0, TFT_HEIGHT);     // Horizontal (Y axis in touch, X on screen)
@@ -108,10 +108,6 @@ uint8_t Display::updateTouch(uint16_t *x, uint16_t *y, uint16_t threshold) {
             case 2:
               *x = map(p.x, 3700, 200, 1, TFT_WIDTH);
               *y = map(p.y, 3800, 240, 1, TFT_HEIGHT);
-              break;
-            case 3:
-              *x = map(p.y, 3800, 240, 1, TFT_WIDTH);
-              *y = map(p.x, 200, 3700, 1, TFT_HEIGHT);
               break;
           }
           return 1;
@@ -205,7 +201,7 @@ void Display::RunSetup() {
   #ifdef HAS_CYD_TOUCH
     this->touchscreenSPI.begin(XPT2046_CLK, XPT2046_MISO, XPT2046_MOSI, XPT2046_CS);
     this->touchscreen.begin(touchscreenSPI);
-    this->touchscreen.setRotation(0);
+    this->touchscreen.setRotation(3);
   #endif
 
   #ifdef HAS_CAP_TOUCH
