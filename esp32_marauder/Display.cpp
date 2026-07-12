@@ -201,7 +201,7 @@ void Display::RunSetup() {
   #ifdef HAS_CYD_TOUCH
     this->touchscreenSPI.begin(XPT2046_CLK, XPT2046_MISO, XPT2046_MOSI, XPT2046_CS);
     this->touchscreen.begin(touchscreenSPI);
-    this->touchscreen.setRotation(3);
+    this->touchscreen.setRotation(0);
   #endif
 
   #ifdef HAS_CAP_TOUCH
